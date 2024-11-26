@@ -17,15 +17,11 @@ async function dashboardLoader() {
       headers: { Authorization: authToken },
       url: `${baseUrl}/funcionarios/listByToken`
     })
-
-    if (response.status !== 200) {
-      return redirect('/login')
-    }
-
-    return { userData: response.data };
+    
+    return response.data;
   } catch (error) {
     console.log(error)
-    throw new Error(error)
+    throw redirect('/login')
   }
 }
 
