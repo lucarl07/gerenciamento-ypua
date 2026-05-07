@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Text from "src/components/Text/Text";
 import Titulo from "src/components/Titulo/Titulo";
 import $ from "./AcomodacaoInfo.module.sass";
@@ -8,7 +8,7 @@ import TitleForm from "src/components/TitleForm/TitleForm";
 import Form from "src/components/Form";
 import formatarDado from "src/hooks/mask.js";
 
-const calculaPreco = (checkIn, checkOut, setPreco, valor) => {
+const calculaPreco = (checkIn, checkOut, valor) => {
   event.preventDefault();
   const start = new Date(checkIn);
   const end = new Date(checkOut);
@@ -16,7 +16,7 @@ const calculaPreco = (checkIn, checkOut, setPreco, valor) => {
   const diffInMs = end - start;
   const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
 
-  setPreco(`${diffInDays * valor},00`);
+  return `${diffInDays * valor},00`;
 };
 
 const QuartoLoader = (setter, loading) => {
@@ -162,7 +162,8 @@ const AcomodacaoInfo = () => {
                     <Button
                       height={"64px"}
                       onClick={() => {
-                        calculaPreco(checkIn, checkOut, setPreco, quarto.preco);
+                        let _preco = calculaPreco(checkIn, checkOut, quarto.preco);
+                        setPreco(_preco)
                       }}
                     >
                       Simular Reserva
