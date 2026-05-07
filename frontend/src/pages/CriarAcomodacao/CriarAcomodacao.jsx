@@ -28,7 +28,7 @@ const CriarAcomodacao = () => {
               <Form.Control.Input placeholder={"quantidade de cama de solteiro"} type={'number'}/>
             </Form.Control.Root>
 
-            <Form.Control.Root name={"cama_casal"} label={"Qtd. Camas de casais"}>
+            <Form.Control.Root name={"cama_casais"} label={"Qtd. Camas de casais"}>
               <Form.Control.Label />
               <Form.Control.Input placeholder={"quantidade de cama de casal"} type={'number'}/>
             </Form.Control.Root>

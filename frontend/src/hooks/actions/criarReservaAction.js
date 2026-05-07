@@ -13,14 +13,9 @@ async function criarReservaAction({ request }) {
 
 
   console.log(token);
+
   let today = new Date();
-  console.log(today);
-
-  let dd = today.getDate();
-  let mm = today.getMonth() + 1;
-
-  let yyyy = today.getFullYear();
-  const data = `${yyyy}-${mm}-${dd}T00:00:00Z`;
+  const data = today.toISOString();
 
   const submission = {
     email: formData.get("email"),
@@ -44,7 +39,7 @@ async function criarReservaAction({ request }) {
   console.log(submission);
 
   try {
-    const response = await axios.post(
+    await axios.post(
       `${baseUrl}/clientes/criarClientes`,
       submission,
       { headers: { Authorization: token } }
